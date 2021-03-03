@@ -14,10 +14,18 @@ const String trafficEvent = 'Traffic';
 const String chosenVehicle = 'Chosen Vehicle';
 const String startWork = 'Start Work';
 const String continueWork = 'Continue';
+const String leaveVehicle = 'Leave Vehicle';
+const String maintenance = 'Maintenance';
+const String checked = 'Checked';
 
 const String fireExtinguisher = 'Fire Extinguisher Check';
 const String panelPVM = 'Panel PVM Check';
 const String flag = 'Flag Check';
+
+const String squadMembers = 'Squad Members';
+const String logMember = 'Login Member';
+const String authenticate = 'Authenticate';
+const String viewNotes = 'Previous Notes';
 
 
 //ITALIAN SECTION

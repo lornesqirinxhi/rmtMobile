@@ -11,10 +11,12 @@ import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/logic_layer/trucks/trucks_cubit.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/auth_presence.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/staff.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/theme/AppTheme.dart';
 import 'package:flutter/services.dart';
@@ -86,7 +88,9 @@ class _MyAppState extends State<MyApp> {
         MainPage.mainId : (context) => MainPage(),
         ChooseTruck.chooseTruckId: (context) => ChooseTruck(),
         CheckDevice.CheckDeviceId : (context) => CheckDevice(),
-        Events.EventsId : (context) => Events()
+        Events.EventsId : (context) => Events(),
+        Staff.staffId : (context) => Staff(),
+        AuthenticatePresence.authPresenceId : (context) => AuthenticatePresence()
       },
 
       home: BlocConsumer<AuthenticationBloc, AuthenticationState>(

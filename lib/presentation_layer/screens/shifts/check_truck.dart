@@ -6,6 +6,7 @@ import 'package:rtm_template_one/constants/style.dart';
 import 'package:rtm_template_one/data_layer/app_data/CheckListData.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/staff.dart';
 import 'package:rtm_template_one/presentation_layer/widget/arrows.dart';
 import 'package:rtm_template_one/presentation_layer/widget/check_listview_item.dart';
 import 'package:rtm_template_one/presentation_layer/widget/current_checkItem.dart';
@@ -73,7 +74,7 @@ class _CheckDeviceState extends State<CheckDevice> {
   }
 
   Widget checkButtons() {
-    if (checkAll && _isButtonDisabled == true) {
+    if (checkAll && _isButtonDisabled) {
       return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Material(
           elevation: 5.0,
@@ -81,12 +82,13 @@ class _CheckDeviceState extends State<CheckDevice> {
           borderRadius: BorderRadius.circular(30.0),
           child: MaterialButton(
             onPressed: () {
+              //LOGOUT USER
               Navigator.pushNamed(context, MainPage.mainId);
             },
             minWidth: 300.0,
             height: 42.0,
             child: Text(
-              "Leave Vehicle",
+              leaveVehicle,
             ),
           ),
         ),
@@ -96,12 +98,13 @@ class _CheckDeviceState extends State<CheckDevice> {
           borderRadius: BorderRadius.circular(30.0),
           child: MaterialButton(
             onPressed: () {
+              //DIALOG BOX
               Navigator.pushNamed(context, MainPage.mainId);
             },
             minWidth: 300.0,
             height: 42.0,
             child: Text(
-              "Maintenance",
+              maintenance,
             ),
           ),
         ),
@@ -115,7 +118,7 @@ class _CheckDeviceState extends State<CheckDevice> {
           onPressed: _isButtonDisabled
               ? null
               : () {
-                  Navigator.pushNamed(context, MainPage.mainId);
+                  Navigator.pushNamed(context, Staff.staffId);
                 },
           minWidth: 300.0,
           height: 42.0,
@@ -234,7 +237,7 @@ class _CheckDeviceState extends State<CheckDevice> {
                               style: TextStyle(fontSize: 20),
                             ),
                             Text(
-                              "Checked",
+                              checked,
                               style: TextStyle(
                                   fontWeight: FontWeight.w900, fontSize: 20),
                             )
