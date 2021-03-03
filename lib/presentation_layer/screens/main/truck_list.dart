@@ -12,7 +12,7 @@ import 'package:rtm_template_one/presentation_layer/InternetConnectionCheck.dart
 import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.dart';
 import 'package:rtm_template_one/presentation_layer/screens/map/maps.dart';
-import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/main/events.dart';
+import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
 import 'package:rtm_template_one/presentation_layer/widget/truck_listTile.dart';
 
 class TruckList extends StatefulWidget {

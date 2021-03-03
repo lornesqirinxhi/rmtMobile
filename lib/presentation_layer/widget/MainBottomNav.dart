@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart.';
 import 'package:rtm_template_one/constants/colors.dart';
 class MainBottomNav extends StatelessWidget {
   final int selectedIndex;
