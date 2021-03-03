@@ -6,15 +6,17 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/constants/strings.dart';
 import 'package:rtm_template_one/constants/style.dart';
+import 'package:rtm_template_one/constants/app_constants.dart';
+import 'package:rtm_template_one/constants/languages.dart';
 import 'package:rtm_template_one/data_layer/repository/AuthRepo.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
-import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_face_tab.dart';
-import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_pin_tab.dart';
-import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_user_tab.dart';
+import 'package:rtm_template_one/presentation_layer/screens/login/login_face_tab.dart';
+import 'package:rtm_template_one/presentation_layer/screens/login/login_pin_tab.dart';
+import 'package:rtm_template_one/presentation_layer/screens/login/login_user_tab.dart';
 import 'package:rtm_template_one/presentation_layer/widget/LoginBottomNav.dart';
 
 class Login extends StatefulWidget {
@@ -86,7 +88,7 @@ class _LoginState extends State<Login> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(welcome, style: kBigTextStyle),
+                                    Text((Languages().localizedValues[language])['welcome'], style: kBigTextStyle),
                                     Switch(
                                       value: myTheme.getTheme(),
                                       onChanged: (newValue) {
