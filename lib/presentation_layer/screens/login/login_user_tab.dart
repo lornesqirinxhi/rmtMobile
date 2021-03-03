@@ -6,7 +6,7 @@ import 'package:rtm_template_one/constants/strings.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/choosed_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
 class UserLogin extends StatefulWidget {
   @override
   _UserLoginState createState() => _UserLoginState();

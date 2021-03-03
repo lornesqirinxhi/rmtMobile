@@ -68,7 +68,7 @@ class _ChooseTruckState extends State<ChooseTruck> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 200),
                   child: Text(
-                    "Veicolo Scelto",
+                    chosenVehicle,
                     style: kBigTextStyle,
                   ),
                 ),

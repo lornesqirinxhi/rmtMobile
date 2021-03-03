@@ -11,7 +11,7 @@ import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/choosed_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_face_tab.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_pin_tab.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login_user_tab.dart';

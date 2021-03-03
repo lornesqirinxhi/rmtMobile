@@ -12,7 +12,7 @@ import 'package:rtm_template_one/presentation_layer/InternetConnectionCheck.dart
 import 'package:rtm_template_one/presentation_layer/screens/main/truck_list.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/choosed_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
 import 'package:rtm_template_one/presentation_layer/widget/MainBottomNav.dart';
 import '../../config.dart';
 

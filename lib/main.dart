@@ -14,7 +14,7 @@ import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/choosed_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/theme/AppTheme.dart';
 import 'package:flutter/services.dart';
