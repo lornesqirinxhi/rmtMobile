@@ -25,7 +25,8 @@ const String flag = 'Flag Check';
 const String squadMembers = 'Squad Members';
 const String logMember = 'Login Member';
 const String authenticate = 'Authenticate';
-const String viewNotes = 'Previous Notes';
+const String previousNotes = 'Previous Notes';
+const String viewNotes = 'View Notes';
 
 
 

@@ -8,7 +8,6 @@ import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 
-
 class ViewNotes extends StatefulWidget {
   static const viewNotesId = 'viewNotes';
   @override
@@ -20,18 +19,18 @@ class _ViewNotesState extends State<ViewNotes> {
   Widget build(BuildContext context) {
     // ignore: close_sinks
     final AuthenticationBloc authenticationBloc =
-    BlocProvider.of<AuthenticationBloc>(context);
+        BlocProvider.of<AuthenticationBloc>(context);
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
-          if (state is AuthenticationNotAuthenticated) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => Login()),
-            );
-          }
-        }, builder: (context, state) {
+      if (state is AuthenticationNotAuthenticated) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => Login()),
+        );
+      }
+    }, builder: (context, state) {
       return Scaffold(
-        appBar: AppBar(leading: Container(), actions: [
+        appBar: AppBar(actions: [
           Row(
             children: <Widget>[
               Material(
@@ -43,7 +42,7 @@ class _ViewNotesState extends State<ViewNotes> {
                     myTheme.changeTheme();
                   },
                   inactiveThumbImage:
-                  AssetImage("assets/images/switch_sun.png"),
+                      AssetImage("assets/images/switch_sun.png"),
                   activeThumbImage: AssetImage("assets/images/switch_moon.png"),
                 ),
               ),
@@ -69,16 +68,54 @@ class _ViewNotesState extends State<ViewNotes> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 200),
                 child: Text(
-                  squadMembers,
+                  previousNotes,
                   style: kBigTextStyle,
                 ),
               ),
             ),
-            ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 700, maxHeight: 300),
-              child: Center(
-                child: Material(
-
+            Center(
+              child: Material(
+                elevation: 5,
+                borderRadius: BorderRadius.circular(15),
+                child: Container(
+                  height: 200,
+                  width: 200,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Stack(
+                        children: [
+                          Icon(
+                            Icons.insert_drive_file,
+                            color: kMainYellow,
+                            size: 90,
+                          ), //Container
+                          Positioned(
+                            left: 5,
+                            top: 5,
+                            child: Icon(
+                              Icons.insert_drive_file,
+                              color: Colors.yellow,
+                              size: 90,
+                            ),
+                          ), //Container
+                          Positioned(
+                            left: 10,
+                            top: 10,
+                            child: Icon(
+                              Icons.insert_drive_file,
+                              color: Color(0xFFdbd69a),
+                              size: 90,
+                            ),
+                          ), //Container
+                        ],
+                      ),
+                      Text(
+                        viewNotes,
+                        style: kMediumTextStyle,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -116,4 +153,3 @@ class _ViewNotesState extends State<ViewNotes> {
     });
   }
 }
-

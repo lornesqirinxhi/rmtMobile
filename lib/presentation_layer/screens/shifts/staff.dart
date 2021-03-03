@@ -9,6 +9,7 @@ import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/auth_presence.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/view_notes.dart';
 import 'package:rtm_template_one/presentation_layer/widget/staff_member.dart';
 
 class Staff extends StatefulWidget {
@@ -105,7 +106,7 @@ class _StaffState extends State<Staff> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, MainPage.mainId);
+                    Navigator.pushNamed(context, ViewNotes.viewNotesId);
                   },
                   minWidth: 400.0,
                   height: 42.0,
