@@ -86,7 +86,7 @@ class _AuthenticatePresenceState extends State<AuthenticatePresence> {
             ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 500,),
               child: Material(
-                elevation: 5.0,
+                elevation: 0.0,
                 borderRadius: BorderRadius.circular(30.0),
                 child: TextField(
                   controller: _pinController,
@@ -94,7 +94,8 @@ class _AuthenticatePresenceState extends State<AuthenticatePresence> {
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'PIN',
-                      prefixIcon: Icon(Icons.dialpad)),
+                      prefixIcon: Icon(Icons.dialpad),
+                       ),
                 ),
               ),
             ),

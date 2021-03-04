@@ -7,6 +7,7 @@ import 'package:rtm_template_one/data_layer/app_data/CheckListData.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/staff.dart';
+import 'package:rtm_template_one/presentation_layer/widget/add_note_alert_dialog.dart';
 import 'package:rtm_template_one/presentation_layer/widget/arrows.dart';
 import 'package:rtm_template_one/presentation_layer/widget/check_listview_item.dart';
 import 'package:rtm_template_one/presentation_layer/widget/current_checkItem.dart';
@@ -99,7 +100,10 @@ class _CheckDeviceState extends State<CheckDevice> {
           child: MaterialButton(
             onPressed: () {
               //DIALOG BOX
-              Navigator.pushNamed(context, MainPage.mainId);
+              showDialog(
+                context: context,
+                builder: (ctx) => AddNoteAlertDialog(),
+              );
             },
             minWidth: 300.0,
             height: 42.0,

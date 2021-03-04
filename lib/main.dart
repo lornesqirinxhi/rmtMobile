@@ -16,8 +16,10 @@ import 'package:rtm_template_one/presentation_layer/screens/shifts/check_truck.d
 import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/notes.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/staff.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/view_notes.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/check_notes.dart';
+import 'package:rtm_template_one/presentation_layer/screens/shifts/view_note.dart';
 import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/theme/AppTheme.dart';
 import 'package:flutter/services.dart';
@@ -92,7 +94,9 @@ class _MyAppState extends State<MyApp> {
         Events.EventsId : (context) => Events(),
         Staff.staffId : (context) => Staff(),
         AuthenticatePresence.authPresenceId : (context) => AuthenticatePresence(),
-        ViewNotes.viewNotesId : (context) => ViewNotes(),
+        CheckNotes.checkNotesId : (context) => CheckNotes(),
+        Notes.notesId : (context) => Notes(),
+        ViewNote.viewNoteId : (context) => ViewNote(),
       },
 
       home: BlocConsumer<AuthenticationBloc, AuthenticationState>(

@@ -27,6 +27,8 @@ const String logMember = 'Login Member';
 const String authenticate = 'Authenticate';
 const String previousNotes = 'Previous Notes';
 const String viewNotes = 'View Notes';
+const String addNote = 'Add Note';
+const String writeNote = 'Write your note here';
 
 
 
