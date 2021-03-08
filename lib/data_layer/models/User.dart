@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 
 import 'dart:convert';
@@ -10,8 +12,10 @@ String userToJson(List<User> data) =>
 class User {
   final String name;
   final String email;
-
-  User({@required this.name, @required this.email});
+  bool auth;
+  final String initials;
+  
+  User({@required this.name, @required this.email, this.auth, this.initials});
 
   @override
   String toString() => 'User { name: $name, email: $email}';
@@ -31,4 +35,23 @@ class User {
     } as Map<String, dynamic>;
   }
 
+}
+
+class UserData extends ChangeNotifier {
+  List<User> list = [
+    User(name: 'Lornes Qirinxhi', initials: 'LQ', auth: false ),
+    User(name: 'Daniel Dishnica', initials: 'DD', auth: false ),
+    User(name: 'Ermand Hoxha', initials: 'EH', auth: false ),
+    User(name: 'Nikolina Kote', initials: 'NK', auth: false ),
+    User(name: 'Ardit Musaku', initials: 'AM', auth: false ),
+    User(name: 'Tea Mileti', initials: 'TM', auth: false ),
+  ];
+
+  UnmodifiableListView<User> get users => UnmodifiableListView(list);
+  int get userCount => list.length;
+
+  void updateItemStatus(User user, bool status) {
+    user.auth = status;
+    notifyListeners();
+  }
 }

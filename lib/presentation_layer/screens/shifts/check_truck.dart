@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/constants/strings.dart';
-import 'package:rtm_template_one/constants/style.dart';
 import 'package:rtm_template_one/data_layer/app_data/CheckListData.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
-import 'package:rtm_template_one/presentation_layer/screens/main/mainpage.dart';
 import 'package:rtm_template_one/presentation_layer/screens/shifts/staff.dart';
 import 'package:rtm_template_one/presentation_layer/widget/add_note_alert_dialog.dart';
 import 'package:rtm_template_one/presentation_layer/widget/arrows.dart';
@@ -84,7 +82,7 @@ class _CheckDeviceState extends State<CheckDevice> {
           child: MaterialButton(
             onPressed: () {
               //LOGOUT USER
-              Navigator.pushNamed(context, MainPage.mainId);
+              BlocProvider.of<AuthenticationBloc>(context).add(UserLoggedOut());
             },
             minWidth: 300.0,
             height: 42.0,

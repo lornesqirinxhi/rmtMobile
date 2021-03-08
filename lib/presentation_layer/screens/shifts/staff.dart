@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/constants/strings.dart';
 import 'package:rtm_template_one/constants/style.dart';
+import 'package:rtm_template_one/data_layer/models/User.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
@@ -19,6 +21,8 @@ class Staff extends StatefulWidget {
 }
 
 class _StaffState extends State<Staff> {
+  List<User> lstUser = UserData().users;
+
   @override
   Widget build(BuildContext context) {
     // ignore: close_sinks
@@ -34,7 +38,7 @@ class _StaffState extends State<Staff> {
       }
     }, builder: (context, state) {
       return Scaffold(
-        appBar: AppBar(   actions: [
+        appBar: AppBar(actions: [
           Row(
             children: <Widget>[
               Material(
@@ -82,9 +86,19 @@ class _StaffState extends State<Staff> {
               child: Center(
                   child: GridView.count(
                 crossAxisCount: 3,
-                 childAspectRatio: 1.5,
-                children: List.generate(6, (index) {
-                  return StaffMember(status: true, name: "Lornes Qirinxhi", initials: "LQ", onTap: (){Navigator.pushNamed(context, AuthenticatePresence.authPresenceId);},);
+                childAspectRatio: 1.5,
+                children: List.generate(lstUser.length, (index) {
+                  return StaffMember(
+                    status: lstUser[index].auth,
+                    name: lstUser[index].name,
+                    initials: lstUser[index].initials,
+                    onTap: () {
+                      Navigator.pushNamed(
+                              context, AuthenticatePresence.authPresenceId,
+                              arguments: lstUser[index])
+                          .then((value) => setState(() {}));
+                    },
+                  );
                 }),
               )),
             ),

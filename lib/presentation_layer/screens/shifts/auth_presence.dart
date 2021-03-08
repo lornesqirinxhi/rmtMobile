@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/constants/strings.dart';
 import 'package:rtm_template_one/constants/style.dart';
+import 'package:rtm_template_one/data_layer/models/User.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
@@ -21,6 +22,7 @@ class _AuthenticatePresenceState extends State<AuthenticatePresence> {
   var _pinController;
   @override
   Widget build(BuildContext context) {
+    final User user = ModalRoute.of(context).settings.arguments;
     // ignore: close_sinks
     final AuthenticationBloc authenticationBloc =
         BlocProvider.of<AuthenticationBloc>(context);
@@ -79,8 +81,8 @@ class _AuthenticatePresenceState extends State<AuthenticatePresence> {
             ),
             StaffMember(
               status: true,
-              name: "Lornes Qirinxhi",
-              initials: "LQ",
+              name: user.name,
+              initials: user.initials,
               onTap: () {},
             ),
             ConstrainedBox(
@@ -109,7 +111,9 @@ class _AuthenticatePresenceState extends State<AuthenticatePresence> {
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Staff.staffId);
+                    UserData().updateItemStatus(user, true);
+                    Navigator.pop(context);
+                    //Navigator.pushNamed(context, Staff.staffId);
                   },
                   minWidth: 400.0,
                   height: 42.0,
