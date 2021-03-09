@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ import 'file:///C:/Users/User/AndroidStudioProjects/rtm_template_one/lib/present
 import 'package:rtm_template_one/presentation_layer/theme/AppTheme.dart';
 import 'package:flutter/services.dart';
 import 'package:rtm_template_one/presentation_layer/route/routes.dart';
+
 void main() {
   Connectivity connectivity;
   DatabaseHelper databaseHelper = databaseHelperConfig;
