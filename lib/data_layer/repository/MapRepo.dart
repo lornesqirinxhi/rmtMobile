@@ -7,7 +7,8 @@ import 'package:rtm_template_one/data_layer/models/AdrLocation.dart';
 class MapServices  {
 
   Future<dynamic> getAddressByPosition(String url) async {
-    http.Response response = await http.get(url);
+    Uri uri = Uri.parse(url);
+    http.Response response = await http.get(uri);
     try {
       if (response.statusCode == 200) {
         var  address = jsonDecode(response.body);
