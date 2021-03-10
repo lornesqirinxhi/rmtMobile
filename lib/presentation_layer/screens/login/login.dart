@@ -11,6 +11,8 @@ import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
+import 'package:rtm_template_one/presentation_layer/routes/application.dart';
+import 'package:rtm_template_one/presentation_layer/routes/routes.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_face_tab.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_pin_tab.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_user_tab.dart';
@@ -20,7 +22,6 @@ import '../../../data_layer/app_data/MapData.dart';
 import '../map/maps.dart';
 
 class Login extends StatefulWidget {
-  static const loginId = 'login';
   @override
   _LoginState createState() => _LoginState();
 }
@@ -58,12 +59,14 @@ class _LoginState extends State<Login> {
           child: BlocConsumer<AuthenticationBloc, AuthenticationState>(
             listener: (context, state) {
               if (state is AuthenticationAuthenticated) {
-                Navigator.pushReplacement(
+                Application.router
+                    .navigateTo(context, Routes.map, replace: true);
+                /* Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => ChangeNotifierProvider<MapData>(
                             create: (context) => MapData(),
-                            child: MapDisplay())));
+                            child: MapDisplay()))); */
               }
             },
             builder: (context, state) {

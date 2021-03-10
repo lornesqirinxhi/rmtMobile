@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/constants/strings.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
+import 'package:rtm_template_one/presentation_layer/routes/application.dart';
+import '../../../presentation_layer/routes/routes.dart';
 
 import '../map/maps.dart';
 
@@ -20,7 +22,7 @@ class _UserLoginState extends State<UserLogin> {
     return BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
       if (state is LoginSuccess) {
         Navigator.of(context).pop();
-        Navigator.pushNamed(context, MapDisplay.mapId);
+        Application.router.navigateTo(context, Routes.map);
         print('Success');
       }
     }, builder: (context, state) {

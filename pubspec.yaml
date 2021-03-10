@@ -43,6 +43,7 @@ dependencies:
   geolocator: ^7.0.1
   camera:
   image_picker: ^0.7.2
+  fluro: ^2.0.3  
  #flutter_secure_storage: ^3.3.5
 
 

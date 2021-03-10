@@ -2,6 +2,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:rtm_template_one/constants/colors.dart';
 import 'package:rtm_template_one/data_layer/local_database/database.dart';
 import 'package:rtm_template_one/data_layer/repository/AuthRepo.dart';
@@ -10,8 +11,12 @@ import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
 import './presentation_layer/screens/login/login.dart';
 import 'package:flutter/services.dart';
+import 'package:fluro/fluro.dart';
 
+import 'data_layer/app_data/MapData.dart';
 import 'presentation_layer/screens/map/maps.dart';
+import './presentation_layer/routes/application.dart';
+import './presentation_layer/routes/routes.dart';
 
 void main() {
   Connectivity connectivity;
@@ -46,6 +51,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  _MyAppState() {
+    final router = FluroRouter();
+    Routes.configureRoutes(router);
+    Application.router = router;
+  }
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -53,42 +63,43 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.landscapeRight,
     ]);
 
-    return MaterialApp(
-      title: 'RMT',
-      theme: myTheme.currentTheme() == ThemeMode.dark
-          ? ThemeData(
-              primaryColor: kMainBlack,
-              brightness: Brightness.dark,
-              textTheme: ThemeData.dark().textTheme.apply(
-                    bodyColor: Colors.grey,
-                    displayColor: Colors.grey,
-                  ))
-          : ThemeData(
-              backgroundColor: Colors.white,
-              brightness: Brightness.light,
-              primaryColor: Colors.white),
-      initialRoute: Login.loginId,
-      routes: {
-        Login.loginId: (context) => Login(),
-        MapDisplay.mapId: (context) => MapDisplay(),
-      },
-      home: BlocConsumer<AuthenticationBloc, AuthenticationState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          if (state is AuthenticationAuthenticated) {
-            return MapDisplay();
-          } else if (state is AuthenticationLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is AuthenticationNotAuthenticated) {
-            return Login();
-          } else {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+    return ChangeNotifierProvider<MapData>(
+      create: (context) => MapData(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'RMT',
+        theme: myTheme.currentTheme() == ThemeMode.dark
+            ? ThemeData(
+                primaryColor: kMainBlack,
+                brightness: Brightness.dark,
+                textTheme: ThemeData.dark().textTheme.apply(
+                      bodyColor: Colors.grey,
+                      displayColor: Colors.grey,
+                    ))
+            : ThemeData(
+                backgroundColor: Colors.white,
+                brightness: Brightness.light,
+                primaryColor: Colors.white),
+        initialRoute: Routes.login,
+        onGenerateRoute: Application.router.generator,
+        home: BlocConsumer<AuthenticationBloc, AuthenticationState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            if (state is AuthenticationAuthenticated) {
+              return MapDisplay();
+            } else if (state is AuthenticationLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is AuthenticationNotAuthenticated) {
+              return Login();
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+          },
+        ),
       ),
     );
   }

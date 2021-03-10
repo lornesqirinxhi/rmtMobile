@@ -8,13 +8,13 @@ import 'package:provider/provider.dart';
 import 'package:rtm_template_one/constants/style.dart';
 import 'package:rtm_template_one/data_layer/app_data/MapData.dart';
 import 'package:rtm_template_one/logic_layer/maps/maps_logic.dart';
+import 'package:rtm_template_one/presentation_layer/routes/application.dart';
+import 'package:rtm_template_one/presentation_layer/routes/routes.dart';
 
 import '../../../logic_layer/authentication/authentication_bloc.dart';
 import '../../config.dart';
-import '../login/login.dart';
 
 class MapDisplay extends StatefulWidget {
-  static const mapId = 'maps';
   @override
   State<MapDisplay> createState() => MapDisplayState();
 }
@@ -54,10 +54,7 @@ class MapDisplayState extends State<MapDisplay> {
     return BlocConsumer<AuthenticationBloc, AuthenticationState>(
       listener: (context, state) {
         if (state is AuthenticationNotAuthenticated) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => Login()),
-          );
+          Application.router.navigateTo(context, Routes.login, replace: true);
         }
       },
       builder: (context, state) {
