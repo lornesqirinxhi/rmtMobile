@@ -1,12 +1,12 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:rtm_template_one/data_layer/local_database/database.dart';
-import 'package:rtm_template_one/data_layer/models/User.dart';
-import 'package:rtm_template_one/data_layer/repository/AuthRepo.dart';
+
+import '../../data_layer/local_database/database.dart';
+import '../../data_layer/models/User.dart';
+import '../../data_layer/repository/AuthRepo.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

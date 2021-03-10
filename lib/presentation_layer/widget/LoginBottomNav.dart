@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rtm_template_one/constants/colors.dart';
+
+import '../../constants/colors.dart';
+
 class LoginBottomNav extends StatelessWidget {
   final int selectedIndex;
   final Function onTap;

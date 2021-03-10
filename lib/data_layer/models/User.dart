@@ -1,8 +1,7 @@
 import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
-
 import 'dart:convert';
+
 List<User> userFromJson(String str) =>
     List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
 
@@ -14,7 +13,7 @@ class User {
   final String email;
   bool auth;
   final String initials;
-  
+
   User({@required this.name, @required this.email, this.auth, this.initials});
 
   @override
@@ -34,17 +33,16 @@ class User {
       'email': this.email,
     } as Map<String, dynamic>;
   }
-
 }
 
 class UserData extends ChangeNotifier {
   List<User> list = [
-    User(name: 'Lornes Qirinxhi', initials: 'LQ', auth: false ),
-    User(name: 'Daniel Dishnica', initials: 'DD', auth: false ),
-    User(name: 'Ermand Hoxha', initials: 'EH', auth: false ),
-    User(name: 'Nikolina Kote', initials: 'NK', auth: false ),
-    User(name: 'Ardit Musaku', initials: 'AM', auth: false ),
-    User(name: 'Tea Mileti', initials: 'TM', auth: false ),
+    User(name: 'Lornes Qirinxhi', initials: 'LQ', auth: false),
+    User(name: 'Daniel Dishnica', initials: 'DD', auth: false),
+    User(name: 'Ermand Hoxha', initials: 'EH', auth: false),
+    User(name: 'Nikolina Kote', initials: 'NK', auth: false),
+    User(name: 'Ardit Musaku', initials: 'AM', auth: false),
+    User(name: 'Tea Mileti', initials: 'TM', auth: false),
   ];
 
   UnmodifiableListView<User> get users => UnmodifiableListView(list);

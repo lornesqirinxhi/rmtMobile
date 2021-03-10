@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class LoginIcons extends StatelessWidget {
   final IconData iconData;
 
@@ -6,7 +7,11 @@ class LoginIcons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(onTap: () {},
-        child: Icon(iconData, size: 40,));
+    return GestureDetector(
+        onTap: () {},
+        child: Icon(
+          iconData,
+          size: 40,
+        ));
   }
 }

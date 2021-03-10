@@ -5,7 +5,8 @@ import 'package:bloc/bloc.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:meta/meta.dart';
-import 'package:rtm_template_one/constants/enums.dart';
+
+import '../../constants/enums.dart';
 
 part 'internet_state.dart';
 
@@ -14,11 +15,10 @@ class InternetCubit extends Cubit<InternetState> {
   StreamSubscription streamSubscription;
   var isDeviceConnected = false;
 
-   InternetCubit({@required this.connectivity}) : super(InternetLoading()) {
+  InternetCubit({@required this.connectivity}) : super(InternetLoading()) {
     streamSubscription = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) async{
-
+        .listen((ConnectivityResult result) async {
       if (result == ConnectivityResult.mobile) {
         // I am connected to a mobile network, make sure there is actually a net connection.
         if (await DataConnectionChecker().hasConnection) {
@@ -26,8 +26,7 @@ class InternetCubit extends Cubit<InternetState> {
           if (checkStatus.isNotEmpty && checkStatus[0].rawAddress.isNotEmpty) {
             isDeviceConnected = true;
             emit(InternetConnected(ConnectivityType.Mobile, isDeviceConnected));
-          }
-          else {
+          } else {
             isDeviceConnected = false;
             emit(NoInternet());
           }
@@ -39,8 +38,7 @@ class InternetCubit extends Cubit<InternetState> {
         if (checkStatus.isNotEmpty && checkStatus[0].rawAddress.isNotEmpty) {
           isDeviceConnected = true;
           emit(InternetConnected(ConnectivityType.Wifi, isDeviceConnected));
-        }
-        else {
+        } else {
           isDeviceConnected = false;
           emit(NoInternet());
         }
@@ -55,6 +53,5 @@ class InternetCubit extends Cubit<InternetState> {
   Future<Function> close() {
     streamSubscription.cancel();
     return super.close();
-
   }
 }

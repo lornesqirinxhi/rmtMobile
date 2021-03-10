@@ -1,10 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:provider/provider.dart';
-import 'package:rtm_template_one/data_layer/app_data/MapData.dart';
-import 'package:rtm_template_one/data_layer/models/AdrLocation.dart';
-import 'package:rtm_template_one/data_layer/repository/MapRepo.dart';
-import 'package:rtm_template_one/presentation_layer/config.dart';
+
+import '../../data_layer/app_data/MapData.dart';
+import '../../data_layer/models/AdrLocation.dart';
+import '../../data_layer/repository/MapRepo.dart';
+import '../../presentation_layer/config.dart';
 
 class MapsLogic {
   Future<dynamic> gAddressByPosition(

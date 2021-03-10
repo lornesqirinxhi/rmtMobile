@@ -3,18 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:rtm_template_one/constants/colors.dart';
-import 'package:rtm_template_one/data_layer/local_database/database.dart';
-import 'package:rtm_template_one/data_layer/repository/AuthRepo.dart';
-import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
-import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
-import 'package:rtm_template_one/presentation_layer/config.dart';
-import './presentation_layer/screens/login/login.dart';
 import 'package:flutter/services.dart';
 import 'package:fluro/fluro.dart';
 
-import 'data_layer/app_data/MapData.dart';
-import 'presentation_layer/screens/map/maps.dart';
+import './constants/colors.dart';
+import './data_layer/local_database/database.dart';
+import './data_layer/repository/AuthRepo.dart';
+import './logic_layer/authentication/authentication_bloc.dart';
+import './logic_layer/internet/internet_cubit.dart';
+import './presentation_layer/config.dart';
+import './presentation_layer/screens/login/login.dart';
+import './data_layer/app_data/MapData.dart';
+import './presentation_layer/screens/map/maps.dart';
 import './presentation_layer/routes/application.dart';
 import './presentation_layer/routes/routes.dart';
 

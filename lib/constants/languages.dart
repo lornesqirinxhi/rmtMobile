@@ -8,10 +8,10 @@ class Languages {
 
   Map<String, Map<String, String>> localizedValues = {
     'en': {
-      'welcome': 'Welcome'
+      'welcome': 'Welcome',
     },
     'it': {
-      'welcome': 'Bentornato'
+      'welcome': 'Benvenuto',
     },
   };
 }

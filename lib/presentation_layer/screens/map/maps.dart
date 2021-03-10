@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:rtm_template_one/constants/style.dart';
-import 'package:rtm_template_one/data_layer/app_data/MapData.dart';
-import 'package:rtm_template_one/logic_layer/maps/maps_logic.dart';
-import 'package:rtm_template_one/presentation_layer/routes/application.dart';
-import 'package:rtm_template_one/presentation_layer/routes/routes.dart';
 
+import '../../../constants/style.dart';
+import '../../../data_layer/app_data/MapData.dart';
+import '../../../logic_layer/maps/maps_logic.dart';
+import '../../../presentation_layer/routes/application.dart';
+import '../../../presentation_layer/routes/routes.dart';
 import '../../../logic_layer/authentication/authentication_bloc.dart';
 import '../../config.dart';
 

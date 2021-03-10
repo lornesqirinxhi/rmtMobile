@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rtm_template_one/constants/colors.dart';
-import 'package:rtm_template_one/constants/strings.dart';
-import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
-import 'package:rtm_template_one/presentation_layer/routes/application.dart';
-import '../../../presentation_layer/routes/routes.dart';
 
-import '../map/maps.dart';
+import '../../../constants/colors.dart';
+import '../../../constants/strings.dart';
+import '../../../logic_layer/login/login_bloc.dart';
+import '../../../presentation_layer/routes/application.dart';
+import '../../../presentation_layer/routes/routes.dart';
 
 class UserLogin extends StatefulWidget {
   @override

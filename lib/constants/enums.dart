@@ -1,14 +1,6 @@
 enum ConnectivityType {
   Wifi,
-  Mobile
-}
-
-enum EventType {
-  Accident,
-  Traffic,
-  Danger,
-  SOS,
-  Construction
+  Mobile,
 }
 
 enum TabItem { wheel, setting, calendar, car }

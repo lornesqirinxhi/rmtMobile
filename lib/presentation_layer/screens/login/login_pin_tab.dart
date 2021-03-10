@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:rtm_template_one/constants/colors.dart';
-import 'package:rtm_template_one/constants/strings.dart';
+
+import '../../../constants/colors.dart';
+import '../../../constants/strings.dart';
+
 class PinLogin extends StatefulWidget {
   @override
   _PinLoginState createState() => _PinLoginState();
@@ -13,7 +15,9 @@ class _PinLoginState extends State<PinLogin> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 500,),
+          constraints: BoxConstraints(
+            maxWidth: 500,
+          ),
           child: Material(
             elevation: 5.0,
             borderRadius: BorderRadius.circular(30.0),
@@ -30,7 +34,9 @@ class _PinLoginState extends State<PinLogin> {
           height: 15,
         ),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 500,),
+          constraints: BoxConstraints(
+            maxWidth: 500,
+          ),
           child: Material(
             elevation: 5.0,
             color: kMainYellow,
@@ -45,7 +51,6 @@ class _PinLoginState extends State<PinLogin> {
             ),
           ),
         ),
-
       ],
     );
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
-import 'package:rtm_template_one/data_layer/models/User.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../data_layer/models/User.dart';
 
 class DatabaseHelper {
   static const _databaseName = 'rmt.db';
