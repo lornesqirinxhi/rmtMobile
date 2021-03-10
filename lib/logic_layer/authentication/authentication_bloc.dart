@@ -39,12 +39,7 @@ class AuthenticationBloc
       if (list.isNotEmpty) {
         yield AuthenticationAuthenticated(user: list.first);
       } else {
-        User user = await authRepo.getUser();
-        if (user != null) {
-          yield AuthenticationAuthenticated(user: user);
-        } else {
-          yield AuthenticationNotAuthenticated();
-        }
+        yield AuthenticationNotAuthenticated();
       }
     } catch (e) {
       yield AuthenticationFailure(message: 'Error');
@@ -55,7 +50,7 @@ class AuthenticationBloc
       UserLoggedIn event) async* {
     bool checkInsert = false;
     try {
-     checkInsert = await databaseHelper.insertUser(event.user);
+      checkInsert = await databaseHelper.insertUser(event.user);
       yield AuthenticationAuthenticated(user: event.user);
     } catch (e) {
       print(e);

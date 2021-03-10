@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:rtm_template_one/constants/colors.dart';
-import 'package:rtm_template_one/constants/strings.dart';
+import 'package:provider/provider.dart';
 import 'package:rtm_template_one/constants/style.dart';
 import 'package:rtm_template_one/constants/app_constants.dart';
 import 'package:rtm_template_one/constants/languages.dart';
@@ -13,11 +11,13 @@ import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/logic_layer/login/login_bloc.dart';
 import 'package:rtm_template_one/presentation_layer/config.dart';
-import 'package:rtm_template_one/presentation_layer/screens/shifts/chosen_truck.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_face_tab.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_pin_tab.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login_user_tab.dart';
 import 'package:rtm_template_one/presentation_layer/widget/LoginBottomNav.dart';
+
+import '../../../data_layer/app_data/MapData.dart';
+import '../map/maps.dart';
 
 class Login extends StatefulWidget {
   static const loginId = 'login';
@@ -54,17 +54,22 @@ class _LoginState extends State<Login> {
     return BlocProvider<LoginBloc>(
       create: (BuildContext context) => LoginBloc(intBloc, authRepo, _authBloc),
       child: WillPopScope(
-        onWillPop: _onBackPressed,
-      child: BlocConsumer<AuthenticationBloc, AuthenticationState>(
-        listener: (context,state){
-          if (state is AuthenticationAuthenticated){
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChooseTruck()),);
-          }
-        },
-        builder: (context,state){
-          if (state is AuthenticationNotAuthenticated) {
-            return  Scaffold(
-                body: SafeArea(
+          onWillPop: _onBackPressed,
+          child: BlocConsumer<AuthenticationBloc, AuthenticationState>(
+            listener: (context, state) {
+              if (state is AuthenticationAuthenticated) {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider<MapData>(
+                            create: (context) => MapData(),
+                            child: MapDisplay())));
+              }
+            },
+            builder: (context, state) {
+              if (state is AuthenticationNotAuthenticated) {
+                return Scaffold(
+                    body: SafeArea(
                   child: Column(children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -78,7 +83,8 @@ class _LoginState extends State<Login> {
                     Expanded(
                       flex: 1,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20, bottom: 20, right: 20),
+                        padding: const EdgeInsets.only(
+                            left: 20, bottom: 20, right: 20),
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -88,17 +94,20 @@ class _LoginState extends State<Login> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text((Languages().localizedValues[language])['welcome'], style: kBigTextStyle),
+                                    Text(
+                                        (Languages().localizedValues[language])[
+                                            'welcome'],
+                                        style: kBigTextStyle),
                                     Switch(
                                       value: myTheme.getTheme(),
                                       onChanged: (newValue) {
                                         setState(() {});
                                         myTheme.changeTheme();
                                       },
-                                      inactiveThumbImage:
-                                      AssetImage("assets/images/switch_sun.png"),
-                                      activeThumbImage:
-                                      AssetImage("assets/images/switch_moon.png"),
+                                      inactiveThumbImage: AssetImage(
+                                          "assets/images/switch_sun.png"),
+                                      activeThumbImage: AssetImage(
+                                          "assets/images/switch_moon.png"),
                                     ),
                                   ],
                                 ),
@@ -107,7 +116,8 @@ class _LoginState extends State<Login> {
                                 height: 15,
                               ),
                               Container(
-                                  child: _widgetOptions.elementAt(_selectedIndex)),
+                                  child:
+                                      _widgetOptions.elementAt(_selectedIndex)),
                               SizedBox(
                                 height: 25,
                               ),
@@ -119,14 +129,17 @@ class _LoginState extends State<Login> {
                                       duration: Duration(seconds: 3),
                                       behavior: SnackBarBehavior.floating,
                                     );
-                                    Scaffold.of(context).showSnackBar(snackBar);
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
                                   } else {
                                     final snackBar = SnackBar(
-                                      content: Text('Check Internet Connection!'),
+                                      content:
+                                          Text('Check Internet Connection!'),
                                       duration: Duration(seconds: 3),
                                       behavior: SnackBarBehavior.floating,
                                     );
-                                    Scaffold.of(context).showSnackBar(snackBar);
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(snackBar);
                                   }
                                 },
                                 builder: (context, state) {
@@ -150,13 +163,11 @@ class _LoginState extends State<Login> {
                     )
                   ]),
                 ));
-          }
-          else {
-            return Center(child: CircularProgressIndicator());
-          }
-      },
-      )
-    ),
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          )),
     );
   }
 
