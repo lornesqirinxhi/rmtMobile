@@ -8,6 +8,7 @@ import 'package:rtm_template_one/data_layer/local_database/database.dart';
 import 'package:rtm_template_one/logic_layer/authentication/authentication_bloc.dart';
 import 'package:rtm_template_one/logic_layer/internet/internet_cubit.dart';
 import 'package:rtm_template_one/presentation_layer/InternetConnectionCheck.dart';
+import 'package:rtm_template_one/presentation_layer/screens/main/activity_list.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/truck_list.dart';
 import 'package:rtm_template_one/presentation_layer/screens/login/login.dart';
 import 'package:rtm_template_one/presentation_layer/screens/main/events.dart';
@@ -24,7 +25,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
-  static List<Widget> _widgetOptions = <Widget>[TruckList(), TruckList(), TruckList(), TruckList()];
+  static List<Widget> _widgetOptions = <Widget>[ActivityList(), TruckList(), TruckList(), TruckList()];
 
   void _onItemTapped(int index) {
     setState(() {

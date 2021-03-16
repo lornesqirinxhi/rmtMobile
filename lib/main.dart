@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:rtm_template_one/constants/colors.dart';
+import 'package:rtm_template_one/data_layer/app_data/MapData.dart';
 import 'package:rtm_template_one/data_layer/local_database/database.dart';
 import 'package:rtm_template_one/data_layer/repository/AuthRepo.dart';
 import 'package:rtm_template_one/data_layer/repository/TruckRepo.dart';
@@ -73,51 +74,54 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.landscapeRight,
     ]);
    
-    return MaterialApp(
-      title: 'RMT',
-      theme: myTheme.currentTheme() == ThemeMode.dark
-          ? ThemeData(
-              primaryColor: kMainBlack,
-              brightness: Brightness.dark,
-              textTheme: ThemeData.dark().textTheme.apply(
-                    bodyColor: Colors.grey,
-                    displayColor: Colors.grey,
-                  ))
-          : ThemeData(
-              backgroundColor: Colors.white,
-              brightness: Brightness.light,
-              primaryColor: Colors.white),
-      initialRoute: Login.loginId,
-      routes: {
-        Login.loginId : (context) => Login(),
-        MainPage.mainId : (context) => MainPage(),
-        ChooseTruck.chooseTruckId: (context) => ChooseTruck(),
-        CheckDevice.CheckDeviceId : (context) => CheckDevice(),
-        Events.EventsId : (context) => Events(),
-        Staff.staffId : (context) => Staff(),
-        AuthenticatePresence.authPresenceId : (context) => AuthenticatePresence(),
-        CheckNotes.checkNotesId : (context) => CheckNotes(),
-        Notes.notesId : (context) => Notes(),
-        ViewNote.viewNoteId : (context) => ViewNote(),
-      },
-
-      home: BlocConsumer<AuthenticationBloc, AuthenticationState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          if (state is AuthenticationAuthenticated) {
-            return ChooseTruck();
-          } else if (state is AuthenticationLoading) {
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state is AuthenticationNotAuthenticated) {
-            return Login();
-          } else {
-            return Center(
-            child: CircularProgressIndicator(),
-          );}
-
+    return  ChangeNotifierProvider<MapData>(
+      create: (context) => MapData(),
+      child: MaterialApp(
+        title: 'RMT',
+        theme: myTheme.currentTheme() == ThemeMode.dark
+            ? ThemeData(
+                primaryColor: kMainBlack,
+                brightness: Brightness.dark,
+                textTheme: ThemeData.dark().textTheme.apply(
+                      bodyColor: Colors.grey,
+                      displayColor: Colors.grey,
+                    ))
+            : ThemeData(
+                backgroundColor: Colors.white,
+                brightness: Brightness.light,
+                primaryColor: Colors.white),
+        initialRoute: Login.loginId,
+        routes: {
+          Login.loginId : (context) => Login(),
+          MainPage.mainId : (context) => MainPage(),
+          ChooseTruck.chooseTruckId: (context) => ChooseTruck(),
+          CheckDevice.CheckDeviceId : (context) => CheckDevice(),
+          Events.EventsId : (context) => Events(),
+          Staff.staffId : (context) => Staff(),
+          AuthenticatePresence.authPresenceId : (context) => AuthenticatePresence(),
+          CheckNotes.checkNotesId : (context) => CheckNotes(),
+          Notes.notesId : (context) => Notes(),
+          ViewNote.viewNoteId : (context) => ViewNote(),
         },
+
+        home: BlocConsumer<AuthenticationBloc, AuthenticationState>(
+          listener: (context, state) {},
+          builder: (context, state) {
+            if (state is AuthenticationAuthenticated) {
+              return ChooseTruck();
+            } else if (state is AuthenticationLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is AuthenticationNotAuthenticated) {
+              return Login();
+            } else {
+              return Center(
+              child: CircularProgressIndicator(),
+            );}
+
+          },
+        ),
       ),
     );
   }

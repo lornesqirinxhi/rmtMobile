@@ -15,7 +15,7 @@ class _PinLoginState extends State<PinLogin> {
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 500,),
           child: Material(
-            elevation: 5.0,
+            elevation: 2.0,
             borderRadius: BorderRadius.circular(30.0),
             child: TextField(
               keyboardType: TextInputType.number,
@@ -32,7 +32,7 @@ class _PinLoginState extends State<PinLogin> {
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 500,),
           child: Material(
-            elevation: 5.0,
+            elevation: 2.0,
             color: kMainYellow,
             borderRadius: BorderRadius.circular(30.0),
             child: MaterialButton(

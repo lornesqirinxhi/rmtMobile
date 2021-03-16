@@ -64,6 +64,7 @@ class _LoginState extends State<Login> {
         builder: (context,state){
           if (state is AuthenticationNotAuthenticated) {
             return  Scaffold(
+              resizeToAvoidBottomInset: false,
                 body: SafeArea(
                   child: Column(children: [
                     Row(
@@ -106,8 +107,10 @@ class _LoginState extends State<Login> {
                               SizedBox(
                                 height: 15,
                               ),
-                              Container(
-                                  child: _widgetOptions.elementAt(_selectedIndex)),
+                              SingleChildScrollView(
+                                child: Container(
+                                    child: _widgetOptions.elementAt(_selectedIndex)),
+                              ),
                               SizedBox(
                                 height: 25,
                               ),

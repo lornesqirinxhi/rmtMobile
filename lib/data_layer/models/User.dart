@@ -39,12 +39,12 @@ class User {
 
 class UserData extends ChangeNotifier {
   List<User> list = [
-    User(name: 'Lornes Qirinxhi', initials: 'LQ', auth: false ),
-    User(name: 'Daniel Dishnica', initials: 'DD', auth: false ),
-    User(name: 'Ermand Hoxha', initials: 'EH', auth: false ),
-    User(name: 'Nikolina Kote', initials: 'NK', auth: false ),
-    User(name: 'Ardit Musaku', initials: 'AM', auth: false ),
-    User(name: 'Tea Mileti', initials: 'TM', auth: false ),
+    User(name: 'Lornes Qirinxhi', email: 'lq@yahoo.com', initials: 'LQ', auth: false ),
+    User(name: 'Daniel Dishnica', email: 'lq@yahoo.com', initials: 'DD', auth: false ),
+    User(name: 'Ermand Hoxha', email: 'lq@yahoo.com', initials: 'EH', auth: false ),
+    User(name: 'Nikolina Kote', email: 'lq@yahoo.com', initials: 'NK', auth: false ),
+    User(name: 'Ardit Musaku', email: 'lq@yahoo.com', initials: 'AM', auth: false ),
+    User(name: 'Tea Mileti',  email: 'lq@yahoo.com',initials: 'TM', auth: false ),
   ];
 
   UnmodifiableListView<User> get users => UnmodifiableListView(list);
